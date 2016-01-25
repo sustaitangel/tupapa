@@ -1,0 +1,54 @@
+language: python
+python:
+  - "3.5"
+
+  
+# command to install dependencies
+install: 
+  - sudo apt-get update -qq
+  - sudo apt-get install python
+  - sudo apt-get install python-pip python-dev build-essential
+  - sudo pip install --upgrade pip
+  - sudo pip install --upgrade virtualenv
+  - sudo pip install -U pip
+  - sudo python ez_setup.py
+  - sudo pip install --upgrade Pweave
+  - sudo apt-get install python-matplotlib
+  - sudo apt-get install nano
+  - sudo apt-get install vim
+ 
+
+
+
+  
+# command to run tests
+script: 
+  - sh scrip_prueba.sh
+
+  
+  
+after_script:
+  - ls
+  - cd manuscript
+  - ls
+  - ls -l *.md | sort -g | awk '{print $9}'
+  - ls *.md | sort -g > Book.txt
+  - cd ..
+  - ls
+  - git init
+  - git remote -v 
+  - git remote remove origin
+  - git remote add origin git@github.com:Wowip/scrum_developer.git  
+  - sudo chmod 600 .ssh/id_rsa
+  - sudo chmod 600 .ssh/id_rsa.pub
+  - ls -a
+  - ls -al .ssh
+  - eval "$(ssh-agent -s)"
+  - ssh-add .ssh/id_rsa
+  - ssh -T git@github.com
+  - git checkout master
+  - git config --global user.email "arturoinosencio@gmail.com"
+  - git config --global user.name "Wowip"
+  - git add . 
+  - git commit -m "añadiendo pruebas"
+  - git push origin master
