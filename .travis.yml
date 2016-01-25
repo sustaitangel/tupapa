@@ -39,7 +39,7 @@ after_script:
   - git init
   - git remote -v 
   - git remote remove origin
-  - git remote add origin git@github.com:Wowip/scrum_developer.git  
+  - git remote add origin git@github.com:sustaitangel/tupapa.git  
   - sudo chmod 600 .ssh/id_rsa
   - sudo chmod 600 .ssh/id_rsa.pub
   - ls -a
@@ -48,8 +48,8 @@ after_script:
   - ssh-add .ssh/id_rsa
   - ssh -T git@github.com
   - git checkout master
-  - git config --global user.email "arturoinosencio@gmail.com"
-  - git config --global user.name "Wowip"
+  - git config --global user.email "luis.sustaita@cimat.mx"
+  - git config --global user.name "sustaitangel"
   - git add . 
   - git commit -m "añadiendo pruebas"
   - git push origin master
